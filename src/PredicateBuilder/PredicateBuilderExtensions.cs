@@ -6,10 +6,10 @@ namespace System.Linq.Expressions
     public static class PredicateBuilderExtensions
     {
         public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
-            => first.Compose(second, Expression.And);
+            => first.Compose(second, Expression.AndAlso);
 
         public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
-            => first.Compose(second, Expression.Or);
+            => first.Compose(second, Expression.OrElse);
 
         private static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second, Func<Expression, Expression, Expression> merge)
         {
